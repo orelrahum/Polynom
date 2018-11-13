@@ -49,11 +49,9 @@ public class Test {
 	}
 
 	public static void Polynomtest() {
-		Polynom p1=new Polynom("3x^2-4x+7");
-
+		Polynom p1=new Polynom("5x^3-2x+1+5x^2");
 		System.out.println("isEquals test: ");
-		
-		System.out.println("test success ? :" + p1.equals(new Polynom ("3x^2-4x+7")));
+		System.out.println("test success ? :" + p1.equals(new Polynom ("5x^3-2x+1")));
 
 		System.out.println("fx test: ");
 		double fxpoly=p1.f(1);
