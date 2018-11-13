@@ -63,7 +63,7 @@ public class Monom implements function{
 				return;
 			}
 			if (xindex==-1 && powerindex==-1){
-					set_coefficient(Double.parseDouble(s));
+				set_coefficient(Double.parseDouble(s));
 				set_power(0);
 				return;
 			}
@@ -148,16 +148,16 @@ public class Monom implements function{
 	}
 	public String toString () {
 		if (get_power()==0) {
-			 return ""+get_coefficient();
+			return ""+get_coefficient();
 		}
-		if (get_power()==1) {
-			if(get_coefficient()==1) {
-				return "x";
-			}
+		if (get_power()==1 && get_coefficient()==1) {
+			return "x";
+		}
+		if (get_power()==1 && get_coefficient()!=1) {
 			return get_coefficient()+"x";
 		}
-		if(get_coefficient()==1) {
-			return "x+^"+get_coefficient();
+		if(get_coefficient()==1 && get_power()!=1) {
+			return "x^"+get_power();
 		}
 		else {
 			return get_coefficient()+"x^"+get_power();
@@ -200,19 +200,14 @@ public class Monom implements function{
 		{
 			throw new RuntimeException("error: invaild input");
 		}
-		if (powerindex==-1 &&xindex==-1) {
+		if (powerindex==-1 && xindex==-1) {
 			return isNum(s);
 		}
-		if (xindex==0) {
-			if (powerindex==-1){
-				return true;
-			}
-			if (powerindex==1)	{
-				if(oneDot(s.substring(2))!=0||!isNum(s.substring(2))) {
-					throw new RuntimeException("error: invaild input");
-				}
-			}
-			else {
+		if (xindex==0 && s.length()==1) {
+			return true;
+		}
+		if (xindex==0 && powerindex==1) {
+			if(oneDot(s.substring(2))!=0||!isNum(s.substring(2))) {
 				throw new RuntimeException("error: invaild input");
 			}
 			return true;
@@ -223,11 +218,7 @@ public class Monom implements function{
 			}
 			return isNum(s);
 		}
-		if (powerindex!=-1 && xindex==-1) 
-		{
-			throw new RuntimeException("error: invaild input");	
-		}
-		else
+		if (powerindex!=-1 && xindex!=-1)
 		{
 			String coe=s.substring(0, xindex);
 			if(isNum(coe))
@@ -236,7 +227,7 @@ public class Monom implements function{
 				if (powindex.length()==0) {
 					throw new RuntimeException("error: invaild input");
 				}
-				if ((powerindex==xindex+1)&& oneDot(s)==0){
+				if ((powerindex==xindex+1)&& oneDot(powindex)==0){
 					return isNum(powindex);
 				}
 			}
@@ -254,10 +245,10 @@ public class Monom implements function{
 		if(s.charAt(0)<48 ||s.charAt(0)>57 ) {
 			throw new RuntimeException("error: invaild input");
 		}
-		
+
 		for (int i=0; i<s.length()&&isNum;i++)
 		{
-			if (s.charAt(i)!=46 &&(s.charAt(i)<48 ||s.charAt(i)>57 ))
+			if (s.charAt(i)!='.' &&(s.charAt(i)<48 ||s.charAt(i)>57 ))
 			{
 				throw new RuntimeException("error: invaild input");
 			}

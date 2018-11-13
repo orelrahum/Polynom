@@ -8,10 +8,14 @@ public class Test {
 		Polynom check3=new Polynom ("-85x^15+43x^4-14x^2+x^2");
 		Polynom_able deri=check3.derivative();
 		System.out.println(check3.toString());
-		System.out.println("We Are Testing now!!!");
-		System.out.println("First test for all Monom fuctions ");
+		System.out.println("-----We Are Testing now!!!-----");
+		System.out.println("");
+		System.out.println("------First test for all Monom fuctions-----");
+		System.out.println("");
 		Monomtest();
-		System.out.println("Second test for all Polynom fuctions ");
+		System.out.println("");
+		System.out.println("-----Second test for all Polynom fuctions-----");
+		System.out.println("");
 		Polynomtest();
 	}
 	public static void Monomtest() {

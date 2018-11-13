@@ -1,5 +1,4 @@
 package myMath;
-//checkcheck
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.function.Predicate;
@@ -28,10 +27,6 @@ public class Polynom implements Polynom_able{
 	public Polynom (String s) {
 		poly=new ArrayList<Monom>();
 		Monom m;
-//		s=s.replaceAll(" \\+ ", "+");
-//		s=s.replaceAll(" \\- ", "-");
-//		s=s.replaceAll(" \\+", "+");
-//		s=s.replaceAll(" \\-", "-");
 		s=s.replaceAll("\\+-", "-");
 		s=s.replaceAll("\\-", "+-");
 		if (s.charAt(0)=='+'){ // if we start with - in Polynom
