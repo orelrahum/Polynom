@@ -16,6 +16,7 @@ import myMath.Monom;
  * @author orelr
  * @author Lital
  */
+
 public class Polynom implements Polynom_able{
 	ArrayList<Monom> poly;
 
@@ -39,7 +40,6 @@ public class Polynom implements Polynom_able{
 			poly.add(m);
 		}
 	}
-
 	
 	/**
 	 *this function of type y=f(x), where both y and x are real numbers.
@@ -147,8 +147,6 @@ public class Polynom implements Polynom_able{
 	@Override
 	public boolean equals(Polynom_able p1) {
 		// TODO Auto-generated method stub
-		poly.sort(CompareSort);
-		this.poly.sort(CompareSort);
 		Iterator<Monom> monoms=this.iteretor();
 		Iterator<Monom> monomsp1=p1.iteretor();
 		int counter=0;

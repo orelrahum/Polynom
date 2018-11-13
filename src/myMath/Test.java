@@ -4,10 +4,6 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Polynom check= new Polynom ("-85x^9+14x^2");
-		Polynom check3=new Polynom ("-85x^15+43x^4-14x^2+x^2");
-		Polynom_able deri=check3.derivative();
-		System.out.println(check3.toString());
 		System.out.println("-----We Are Testing now!!!-----");
 		System.out.println("");
 		System.out.println("------First test for all Monom fuctions-----");
@@ -49,24 +45,24 @@ public class Test {
 	}
 
 	public static void Polynomtest() {
-		Polynom p1=new Polynom("5x^3-2x+1+5x^2");
+		Polynom p1=new Polynom("5x^3+5x^2-2x+1");
 		System.out.println("isEquals test: ");
-		System.out.println("test success ? :" + p1.equals(new Polynom ("5x^3-2x+1")));
+		System.out.println("test success ? :" + p1.equals(new Polynom ("5x^3+5x^2-2x+1")));
 
 		System.out.println("fx test: ");
 		double fxpoly=p1.f(1);
-		boolean ans=fxpoly==6;
+		boolean ans=fxpoly==9;
 		System.out.println("test success ? :" + ans);
 
 		System.out.println("derivative test: ");
 		Polynom_able deri=p1.derivative();
-		Polynom dx=new Polynom("6x-4");
+		Polynom dx=new Polynom("15x^2+10x-2");
 		System.out.println("test success ? :" + deri.equals(dx));
 
 		System.out.println("multyply test: ");
 		Polynom mult = new Polynom("3x^2+2");
 		mult.multiply(p1);
-		ans=mult.equals(new Polynom("9x^4-12x^3+27x^2-8x+14"));
+		ans=mult.equals(new Polynom("15.0x^5+15.0x^4+4.0x^3+13.0x^2+-4.0x+2.0"));
 		System.out.println("test success ? :" + ans);
 
 		System.out.println("add monom test: ");

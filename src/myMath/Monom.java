@@ -147,6 +147,9 @@ public class Monom implements function{
 		}
 	}
 	public String toString () {
+		if (get_coefficient()==0) {
+			return "0";
+		}
 		if (get_power()==0) {
 			return ""+get_coefficient();
 		}
