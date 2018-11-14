@@ -27,7 +27,7 @@ public class Polynom implements Polynom_able{
 	}
 	public Polynom (String s) {
 		poly=new ArrayList<Monom>();
-		Monom m;
+		Monom m,m2;
 		s=s.replaceAll("\\+-", "-");
 		s=s.replaceAll("\\-", "+-");
 		if (s.charAt(0)=='+'){ // if we start with - in Polynom
@@ -37,10 +37,33 @@ public class Polynom implements Polynom_able{
 		str=s.split("\\+");
 		for (int i=0;i<str.length;i++) {
 			m =new Monom(str[i]);
-			poly.add(m);
+			for (int j=0;j<poly.size();j++){
+				m2=new Monom(str[j]);
+				if (m.get_power()==m2.get_power()) {
+					m=new Monom (m.get_coefficient()+m2.get_coefficient(),m.get_power());
+					poly.remove(j);
+				}
+
+			}
+				poly.add(m);
+		}
+		if (poly.size()==0)
+		{
+			Monom zero=new Monom("0");
+			poly.add(zero);
+		}
+		poly.sort(CompareSort);
+	}
+	public Polynom(Polynom p) {
+		poly = new ArrayList<Monom>();
+		Iterator<Monom> monoms = p.iteretor();
+		while(monoms.hasNext()) {
+			Monom a = new Monom(monoms.next());
+			add(a);
 		}
 	}
-	
+
+
 	/**
 	 *this function of type y=f(x), where both y and x are real numbers.
 	 *@param x this is the value of x
@@ -67,7 +90,7 @@ public class Polynom implements Polynom_able{
 		Iterator<Monom> monoms =p1.iteretor();
 		// TODO Auto-generated method stub
 		while (monoms.hasNext()) {
-			
+
 			this.add(monoms.next());
 		}
 		poly.sort(CompareSort);
@@ -187,28 +210,28 @@ public class Polynom implements Polynom_able{
 	 */
 	@Override
 	public double root(double x0, double x1, double eps) {
-			if (f(x0) * f(x1) <= 0) {
-				double middle = (x1 + x0) / 2;
-				if (Math.abs(f(middle)) < eps) {
-					return middle;
-				}
-				if (f(x0) == 0) {
-					return x0;
-				}
-				if (f(x1) == 0) {
-					return x1;
-				}
-				if (f(middle) < 0) {
-					x0 = middle;
-				} else if (f(middle) > 0) {
-					x1 = middle;
-				}
+		if (f(x0) * f(x1) <= 0) {
+			double middle = (x1 + x0) / 2;
+			if (Math.abs(f(middle)) < eps) {
+				return middle;
 			}
-			else {
-				throw new IllegalArgumentException("exponent cannot be calculate ");
+			if (f(x0) == 0) {
+				return x0;
 			}
-			return root(x0, x1, eps);
+			if (f(x1) == 0) {
+				return x1;
+			}
+			if (f(middle) < 0) {
+				x0 = middle;
+			} else if (f(middle) > 0) {
+				x1 = middle;
+			}
 		}
+		else {
+			throw new IllegalArgumentException("exponent cannot be calculate ");
+		}
+		return root(x0, x1, eps);
+	}
 	/**
 	 * create a deep copy of this Polynum
 	 * @return Polynom that equal to the original polynom
@@ -235,7 +258,7 @@ public class Polynom implements Polynom_able{
 		while (monoms.hasNext()) {
 			Monom deri=monoms.next().derivative();
 			if (deri.get_coefficient()!=0){
-			dx.add(deri);}	
+				dx.add(deri);}	
 		}
 		return dx;
 	}
@@ -253,7 +276,7 @@ public class Polynom implements Polynom_able{
 		{
 			if(f(i)<0)
 			{
-				
+
 			}
 			else
 			{
