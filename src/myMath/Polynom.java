@@ -79,7 +79,6 @@ public class Polynom implements Polynom_able{
 	/**
 	 * this function add to my original Polynom. another Polynom
 	 * @param p1 this is the Polynom that I need to add to my own Polynom
-	 * @return my own Polynom after that I add another Polynom
 	 */
 	@Override
 	public void add(Polynom_able p1) {
@@ -94,7 +93,6 @@ public class Polynom implements Polynom_able{
 	/**
 	 * * this function add to my original Polynom. new Monom
 	 * @param m1 this is the Monom that I need to add to my own Polynom
-	 * @return my own Polynom after that I add Monom
 	 */
 
 	@Override
@@ -122,7 +120,6 @@ public class Polynom implements Polynom_able{
 	/**
 	 * this function substract to my original Polynom. another Polynom 
 	 * @param p1 this is the Polynom that I need to substract to my own Polynom
-	 * @return my own Polynom after that I substract another Polynom
 	 */
 	@Override
 	public void substract(Polynom_able p1) {
@@ -141,7 +138,6 @@ public class Polynom implements Polynom_able{
 	/**
 	 * Multiply this Polynom by p1
 	 * @param p1 its the Polynom that function get
-	 * @return my own Polynom after that I multiply another Polynom
 	 */
 	@Override
 	public void multiply(Polynom_able p1) {
@@ -199,15 +195,7 @@ public class Polynom implements Polynom_able{
 		}
 		return true;
 	}
-	/**
-	 * Compute a value x' (x0<=x'<=x1) for with |f(x')| < eps
-	 * assuming (f(x0)*f(x1)<=0, returns f(x2) such that:
-	 * *	(i) x0<=x2<=x2 && (ii) f(x2)<eps
-	 * @param x0 starting point
-	 * @param x1 end point
-	 * @param eps step (positive) value
-	 * @return 
-	 */
+
 	@Override
 	public double root(double x0, double x1, double eps) {
 		if (f(x0) * f(x1) <= 0) {
