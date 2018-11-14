@@ -286,6 +286,11 @@ public class Polynom implements Polynom_able{
 	 * toString function for this polynom
 	 * @return the String of this polynom
 	 */
+	public void GUI(double xStart, double xFinish) {
+		Graph frame = new Graph(this, xStart, xFinish);
+		frame.setVisible(true);
+
+	}
 	public String toString() {
 		String s ="";
 		Iterator <Monom> monoms=this.iteretor();

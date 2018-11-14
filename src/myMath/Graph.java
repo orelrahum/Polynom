@@ -10,7 +10,8 @@ import de.erichseifert.gral.plots.points.PointRenderer;
 import de.erichseifert.gral.ui.InteractivePanel;
 
 public class Graph extends JFrame {
-    public Graph(Polynom p,double x0,double x1, double eps) {
+	private double eps=0.25;
+    public Graph(Polynom p,double x0,double x1) {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000,1000);
         DataTable Extreme = new DataTable(Double.class, Double.class);
@@ -45,8 +46,7 @@ public class Graph extends JFrame {
     	Polynom p=new Polynom ("x^5-5x^4+5x^3");
 		double x0=-6;
 		double x1=10;
-		double eps=0.5;
-		Graph frame = new Graph(p,x0,x1,eps);
+		Graph frame = new Graph(p,x0,x1);
 		frame.setVisible(true);
     }
 }
