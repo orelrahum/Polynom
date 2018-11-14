@@ -42,6 +42,9 @@ public class Monom implements function{
 	 */
 	public Monom (String s)
 	{
+		if(s.length()==0) {
+			throw new IndexOutOfBoundsException("this String is empty :(");
+		}
 		s=s.toLowerCase();
 		String s1=s;
 		if (s.charAt(0)=='-')
