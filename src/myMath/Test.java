@@ -45,8 +45,7 @@ public class Test {
 	}
 
 	public static void Polynomtest() {
-		Polynom p1=new Polynom("");
-		System.out.println(p1.toString());
+		Polynom p1=new Polynom("5x^3+5x^2+1-2x");
 		System.out.println("isEquals test: ");
 		System.out.println("test success ? :" + p1.equals(new Polynom ("5x^3+5x^2-2x+1")));
 

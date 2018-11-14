@@ -110,7 +110,9 @@ public class Polynom implements Polynom_able{
 
 			if (m.get_power()==m1.get_power()) {
 				m.add(m1);
-
+				if(m.isZero()) {
+					poly.remove(m);
+				}
 				return;
 			}
 		}
