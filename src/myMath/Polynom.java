@@ -26,8 +26,12 @@ public class Polynom implements Polynom_able{
 		poly=new ArrayList<Monom>(0);
 	}
 	public Polynom (String s) {
+		Polynom polyString=new Polynom();
 		poly=new ArrayList<Monom>();
-		Monom m,m2;
+		Monom m;
+		if(s.length()==0) {
+			throw new IndexOutOfBoundsException("this String is empty :(");
+		}
 		s=s.replaceAll("\\+-", "-");
 		s=s.replaceAll("\\-", "+-");
 		if (s.charAt(0)=='+'){ // if we start with - in Polynom
@@ -35,24 +39,16 @@ public class Polynom implements Polynom_able{
 		}
 		String str [];
 		str=s.split("\\+");
+
 		for (int i=0;i<str.length;i++) {
 			m =new Monom(str[i]);
-			for (int j=0;j<poly.size();j++){
-				m2=new Monom(str[j]);
-				if (m.get_power()==m2.get_power()) {
-					m=new Monom (m.get_coefficient()+m2.get_coefficient(),m.get_power());
-					poly.remove(j);
-				}
+			polyString.add(m);
+		}
+		this.poly=polyString.poly;
+		if (poly.size()==0) {
+			poly.add(new Monom ("0"));
+		}
 
-			}
-				poly.add(m);
-		}
-		if (poly.size()==0)
-		{
-			Monom zero=new Monom("0");
-			poly.add(zero);
-		}
-		poly.sort(CompareSort);
 	}
 	public Polynom(Polynom p) {
 		poly = new ArrayList<Monom>();
@@ -104,15 +100,17 @@ public class Polynom implements Polynom_able{
 	@Override
 	public void add(Monom m1) {
 		// TODO Auto-generated method stub
+		if (m1.get_coefficient()==0) {
+			return;
+		}
 		Iterator<Monom> monoms = this.iteretor();
 		while (monoms.hasNext()&& !poly.isEmpty())
 		{
 			Monom m=monoms.next();
+
 			if (m.get_power()==m1.get_power()) {
 				m.add(m1);
-				if(m.isZero()) {
-					poly.remove(m);
-				}
+
 				return;
 			}
 		}
