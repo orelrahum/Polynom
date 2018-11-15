@@ -12,21 +12,24 @@ import de.erichseifert.gral.ui.InteractivePanel;
 public class Graph extends JFrame {
 	private double eps=0.25;
     public Graph(Polynom p,double x0,double x1) {
+    	double area=p.area(x0, x1,  0.01);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000,1000);
         DataTable Extreme = new DataTable(Double.class, Double.class);
         DataTable data = new DataTable(Double.class, Double.class);
+    	String extreme=("Extreme Points: ");
         for (double x = x0; x <= x1; x+=eps) {
 			double y = p.f(x);
 			if (isEx(p,x,eps)) {
-//				System.out.println(p.derivative().toString());
-				System.out.println("("+x+","+y+")");
+				extreme=extreme+"("+x+","+y+") ";
 				Extreme.add(x, y);
 			}else {
 			data.add(x, y);
 			}
 		}
-
+        if(extreme.equals("Extreme Points: ")) {
+			extreme="there is no Extreme Points";
+		}
         XYPlot plot = new XYPlot(data,Extreme);
         getContentPane().add(new InteractivePanel(plot));
         LineRenderer lines = new DefaultLineRenderer2D();
@@ -36,6 +39,7 @@ public class Graph extends JFrame {
         plot.getPointRenderers(Extreme).get(0).setColor(colorExtreme);
         plot.getPointRenderers(data).get(0).setColor(color);
         plot.getLineRenderers(data).get(0).setColor(color);
+        System.out.println(extreme +"\nthe area is: "+area);
     }
     public static boolean isEx(Polynom p,double x, double eps) {
     	Polynom_able dx = p.derivative();
@@ -50,12 +54,10 @@ public class Graph extends JFrame {
 			return false;
     }
     public static void main(String[] args) {
-    	Polynom p=new Polynom ("-x^5+x");
-    	
-    	System.out.println(p.derivative().toString());
-		double x0=-6;
+    	Polynom p=new Polynom ("x^3+x");
+   		double x0=-6;
 		double x1=10;
-	//	Graph frame = new Graph(p,x0,x1);
-	//	frame.setVisible(true);
+		Graph frame = new Graph(p,x0,x1);
+		frame.setVisible(true);
     }
 }
