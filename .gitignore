@@ -23,3 +23,4 @@
 hs_err_pid*
 /bin/
 test/myMath/MonomTest.java
+bin/myMath/Test.class
