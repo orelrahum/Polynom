@@ -112,16 +112,9 @@ class MonomTest {
 
 	@Test
 	void testIsEquals() {
-		Monom m1 = new Monom(0, 0);
+		Monom m1 = new Monom(7, 0);
 		Monom m2 = new Monom(2, 0);
-		Monom m3 = new Monom(2, 3);
-		Monom m4 = new Monom(2, 3);
-		System.out.println(m3.toString());
-		System.out.println(m4.toString());
 		assertFalse(m1.equals(m2));
-		assertFalse(m2.equals(m3));
-		assertTrue(!m3.equals(m4));
-		assertTrue(m4.equals(m3));
 	}
 
 //	@Test

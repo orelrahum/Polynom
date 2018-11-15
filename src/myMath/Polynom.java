@@ -29,28 +29,28 @@ public class Polynom implements Polynom_able{
 		Polynom polyString=new Polynom();
 		poly=new ArrayList<Monom>();
 		Monom m;
-		if(s.length()==0) {
+		if(s.length()==0) { // if its emepy string its throw exception
 			throw new IndexOutOfBoundsException("this String is empty :(");
 		}
-		s=s.replaceAll("\\+-", "-");
-		s=s.replaceAll("\\-", "+-");
+		s=s.replaceAll("\\+-", "-"); //change all +- to plus (if user inpot +- )
+		s=s.replaceAll("\\-", "+-"); // change all - to +- (to make split by +)
 		if (s.charAt(0)=='+'){ // if we start with - in Polynom
 			s=s.substring(1);
 		}
 		String str [];
 		str=s.split("\\+");
 
-		for (int i=0;i<str.length;i++) {
+		for (int i=0;i<str.length;i++) { // all String in my array its need be polynom and I add it)
 			m =new Monom(str[i]);
 			polyString.add(m);
 		}
 		this.poly=polyString.poly;
-		if (poly.size()==0) {
+		if (poly.size()==0) { // if we dont have nothing on polynom (all is zero). give me one zero
 			poly.add(new Monom ("0"));
 		}
 
 	}
-	public Polynom(Polynom p) {
+	public Polynom(Polynom p) { // copy constractor
 		poly = new ArrayList<Monom>();
 		Iterator<Monom> monoms = p.iteretor();
 		while(monoms.hasNext()) {
@@ -66,7 +66,7 @@ public class Polynom implements Polynom_able{
 	 *@return the value of this function on axis x
 	 */
 	@Override
-	public double f(double x) {
+	public double f(double x) { // 
 		// TODO Auto-generated method stub
 		double fx=0;
 		Iterator<Monom> monoms =this.iteretor();
@@ -106,16 +106,16 @@ public class Polynom implements Polynom_able{
 		{
 			Monom m=monoms.next();
 
-			if (m.get_power()==m1.get_power()) {
+			if (m.get_power()==m1.get_power()) { //if the result have the same power. connect them
 				m.add(m1);
-				if(m.isZero()) {
+				if(m.isZero()) { //it the result is zero so remove it from my Polynom
 					poly.remove(m);
 				}
 				return;
 			}
 		}
 		poly.add(m1);
-		poly.sort(CompareSort);
+		poly.sort(CompareSort); // sort my Polynom
 	}
 	/**
 	 * this function substract to my original Polynom. another Polynom 
@@ -288,10 +288,7 @@ public class Polynom implements Polynom_able{
 	 * toString function for this polynom
 	 * @return the String of this polynom
 	 */
-	public void GUI(double xStart, double xFinish) {
-		Graph frame = new Graph(this, xStart, xFinish);
-		frame.setVisible(true);
-	}
+
 	public String toString() {
 		String s ="";
 		String check="";
@@ -313,6 +310,10 @@ public class Polynom implements Polynom_able{
 
 
 		return s;
+	}
+	public void GUI(double xStart, double xFinish) {
+		Graph frame = new Graph(this, xStart, xFinish);
+		frame.setVisible(true);
 	}
 	// ********** add your code below ***********
 
