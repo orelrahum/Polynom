@@ -42,6 +42,7 @@ public class Monom implements function{
 	 */
 	public Monom (String s)
 	{
+		boolean minus=false;
 		if(s.length()==0) {
 			throw new IndexOutOfBoundsException("this String is empty :(");
 		}
@@ -50,11 +51,34 @@ public class Monom implements function{
 		if (s.charAt(0)=='-')
 		{
 			s1=s1.substring(1);
+			minus=true;
+			
 		}
 		int xindex=s.indexOf('x');
 		int powerindex=s.indexOf('^');
 		if (isMonom(s1))
 		{
+			if(minus&&xindex!=1&&xindex!=-1) {
+				String coe= s.substring(0, xindex);
+				set_coefficient(Double.parseDouble(coe));
+				String pow=s.substring(powerindex+1);
+				if(powerindex==-1) {
+					set_power(1);
+				}else {
+					set_power(Integer.parseInt(pow));
+				}
+				return;
+			}
+			if(minus&&xindex==1){
+				set_coefficient(-1);
+				String pow=s.substring(powerindex+1);
+				if(powerindex==-1) {
+					set_power(1);
+				}else {
+					set_power(Integer.parseInt(pow));
+				}
+				return;
+			}
 			if(xindex==0){
 				set_coefficient(1);
 				String pow=s.substring(powerindex+1);

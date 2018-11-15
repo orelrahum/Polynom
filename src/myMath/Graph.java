@@ -50,7 +50,7 @@ public class Graph extends JFrame {
 			return false;
     }
     public static void main(String[] args) {
-    	Polynom p=new Polynom ("2x^2-2x-1");
+    	Polynom p=new Polynom ("-x^5+x");
     	
     	System.out.println(p.derivative().toString());
 		double x0=-6;

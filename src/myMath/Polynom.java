@@ -243,8 +243,10 @@ public class Polynom implements Polynom_able{
 		// TODO Auto-generated method stub
 		Iterator <Monom> monoms=this.iteretor();
 		Polynom dx= new Polynom();
-		while (monoms.hasNext()) {
-			Monom deri=monoms.next().derivative();
+	
+			while (monoms.hasNext()) {
+			Monom next=monoms.next();
+			Monom deri=next.derivative();
 			if (deri.get_coefficient()!=0){
 				dx.add(deri);}	
 		}
