@@ -117,8 +117,10 @@ class MonomTest {
 		assertFalse(m1.equals(m2));
 	}
 
-//	@Test
-//	void testIsZero() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	void testIsZero() {
+		Monom m0=new Monom (0,7);
+		if (!m0.isZero())
+		fail("Not yet implemented");
+	}
 }
