@@ -311,11 +311,4 @@ public class Monom implements function{
 		return counter;
 	}
 
-	public void addForPolynom (Monom m1)
-	{
-		if (get_power()==m1.get_power()){
-			set_coefficient(get_coefficient()+m1.get_coefficient());
-		}
-		return;
-	}
 }

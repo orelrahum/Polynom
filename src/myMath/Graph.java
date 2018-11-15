@@ -53,5 +53,10 @@ public class Graph extends JFrame {
 			}
 			return false;
     }
-
+    public static void main(String[] args) {
+	Polynom p=new Polynom("0.2x^4-1.5x^3+3x^2-x-5");
+	double start=-2;
+	double finish=6;
+	p.GUI(start, finish);
+    }
 }
