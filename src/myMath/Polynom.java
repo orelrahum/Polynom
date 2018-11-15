@@ -293,13 +293,24 @@ public class Polynom implements Polynom_able{
 	}
 	public String toString() {
 		String s ="";
+		String check="";
+		Monom m;
 		Iterator <Monom> monoms=this.iteretor();
 		if(monoms.hasNext()) {
 			s=monoms.next().toString();
 		}
 		while(monoms.hasNext()) {
-			s=s+"+"+monoms.next().toString();
+			m=monoms.next();
+			check=""+m.get_coefficient();
+			if (check.charAt(0)=='-'|| check.charAt(0)=='+'){
+				s=s+m.toString();
+			}
+			else {
+				s=s+"+"+m.toString();
+			}
 		}
+
+
 		return s;
 	}
 	// ********** add your code below ***********
