@@ -10,7 +10,7 @@ import de.erichseifert.gral.plots.points.PointRenderer;
 import de.erichseifert.gral.ui.InteractivePanel;
 
 public class Graph extends JFrame {
-	private double eps=0.01;
+	private double eps=0.1;
     public Graph(Polynom p,double x0,double x1) {
     	double area=p.area(x0, x1,  0.01);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -43,11 +43,11 @@ public class Graph extends JFrame {
     }
     public static boolean isEx(Polynom p,double x, double eps) {
     	Polynom_able dx = p.derivative();
-			if(dx.f(x)==0) {
-				if(dx.f(x-eps)>0&&dx.f(x+eps)<0) {
+			if(dx.f(x)<=-0.001 || dx.f(x)>=-0.001) {
+				if(dx.f(x-eps)>=0&&dx.f(x+eps)<=0) {
 				return true;
 				}
-				if(dx.f(x-eps)<0&&dx.f(x+eps)>0) {
+				if(dx.f(x-eps)<=0&&dx.f(x+eps)>=0) {
 					return true;
 				}
 			}

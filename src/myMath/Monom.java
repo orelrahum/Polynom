@@ -43,10 +43,10 @@ public class Monom implements function{
 	public Monom (String s)
 	{
 		boolean minus=false;
-		if(s.length()==0) {
+		if(s.length()==0) { //it we get empty string
 			throw new IndexOutOfBoundsException("this String is empty :(");
 		}
-		s=s.toLowerCase();
+		s=s.toLowerCase(); //make all my The letters ан кн''чш
 		String s1=s;
 		if (s.charAt(0)=='-')
 		{
@@ -56,25 +56,25 @@ public class Monom implements function{
 		}
 		int xindex=s.indexOf('x');
 		int powerindex=s.indexOf('^');
-		if (isMonom(s1))
+		if (isMonom(s1)) //check its true monom
 		{
-			if(minus&&xindex!=1&&xindex!=-1) {
+			if(minus&&xindex!=1&&xindex!=-1) { //just number
 				String coe= s.substring(0, xindex);
 				set_coefficient(Double.parseDouble(coe));
 				String pow=s.substring(powerindex+1);
-				if(powerindex==-1) {
+				if(powerindex==-1) { //without power
 					set_power(1);
 				}else {
 					set_power(Integer.parseInt(pow));
 				}
 				return;
 			}
-			if(minus&&xindex==1){
+			if(minus&&xindex==1){ 
 				set_coefficient(-1);
 				String pow=s.substring(powerindex+1);
-				if(powerindex==-1) {
+				if(powerindex==-1) { //just with number and x
 					set_power(1);
-				}else {
+				}else { //all options
 					set_power(Integer.parseInt(pow));
 				}
 				return;
@@ -82,20 +82,20 @@ public class Monom implements function{
 			if(xindex==0){
 				set_coefficient(1);
 				String pow=s.substring(powerindex+1);
-				if(powerindex==-1) {
+				if(powerindex==-1) { //X without power
 					set_power(1);
-				}else {
+				}else { //just x with power
 					set_power(Integer.parseInt(pow));
 				}
 				return;
 			}
-			if (xindex==-1 && powerindex==-1){
+			if (xindex==-1 && powerindex==-1){ //just number
 				set_coefficient(Double.parseDouble(s));
 				set_power(0);
 				return;
 			}
 		}
-		if (powerindex==-1 && xindex!=-1)
+		if (powerindex==-1 && xindex!=-1) //just x
 		{
 			
 			
@@ -115,7 +115,7 @@ public class Monom implements function{
 			set_power(1);
 			return;
 		}
-		else
+		else //all other cases
 		{
 			if(s.charAt(1)=='-') {
 				String coe=s.substring(1, xindex);
@@ -181,26 +181,26 @@ public class Monom implements function{
 		}
 	}
 	public String toString () {
-		if (get_coefficient()==0) {
+		if (get_coefficient()==0) { //iszero
 			return "0";
 		}
-		if (get_power()==0) {
+		if (get_power()==0) { //without x
 			return ""+get_coefficient();
 		}
-		if (get_power()==1 && get_coefficient()==1) {
+		if (get_power()==1 && get_coefficient()==1) { //just 'x'
 			return "x";
 		}
-		if (get_power()==1 && get_coefficient()!=1) {
+		if (get_power()==1 && get_coefficient()!=1) { //just number and 'x'
 			return get_coefficient()+"x";
 		}
-		if(get_coefficient()==1 && get_power()!=1) {
+		if(get_coefficient()==1 && get_power()!=1) { //x and then the power
 			return "x^"+get_power();
 		}
-		else {
+		else { //all ther cases
 			return get_coefficient()+"x^"+get_power();
 		}
 	}
-	public boolean isEquals(Monom m) {
+	public boolean isEquals(Monom m) { //check if its ezuals to other Monom
 		if(this.get_coefficient()==m.get_coefficient()) {
 			if(this.get_power()==m.get_power()) {
 				return true;
@@ -208,7 +208,7 @@ public class Monom implements function{
 		}
 		return false;
 	}
-	public boolean isZero() {
+	public boolean isZero() { //check if its zero Monom
 		boolean zero=false;
 		if(get_coefficient()==0) {
 			zero=true;
@@ -229,33 +229,33 @@ public class Monom implements function{
 	/*this function check if the string is a legal monom 
 	 * @param s the string that we want to check 
 	 */
-	private boolean isMonom (String s)
+	private boolean isMonom (String s) // check if its correct String
 	{
 		int xindex=s.indexOf('x');
 		int powerindex=s.indexOf('^');
-		if (oneDot(s)>1)
+		if (oneDot(s)>1) //check if we have only one dot
 		{
 			throw new RuntimeException("error: invaild input");
 		}
-		if (powerindex==-1 && xindex==-1) {
+		if (powerindex==-1 && xindex==-1) { //have just number
 			return isNum(s);
 		}
-		if (xindex==0 && s.length()==1) {
+		if (xindex==0 && s.length()==1) { //have just x
 			return true;
 		}
-		if (xindex==0 && powerindex==1) {
+		if (xindex==0 && powerindex==1) { //have just x^ and power
 			if(oneDot(s.substring(2))!=0||!isNum(s.substring(2))) {
 				throw new RuntimeException("error: invaild input");
 			}
 			return true;
 		}
-		if (powerindex==-1 &&xindex!=-1 && xindex!=0) {
+		if (powerindex==-1 &&xindex!=-1 && xindex!=0) { // if I have number and other just x
 			if (s.charAt(s.length()-1)=='x') {
 				s=s.substring(0, s.length()-1);
 			}
 			return isNum(s);
 		}
-		if (powerindex!=-1 && xindex!=-1)
+		if (powerindex!=-1 && xindex!=-1) //all other cases
 		{
 			String coe=s.substring(0, xindex);
 			if(isNum(coe))
@@ -276,14 +276,14 @@ public class Monom implements function{
 	 * @param s the string that we want to check
 	 * @return boolean- true if its a number & false if isn't
 	 */
-	private boolean isNum (String s)
+	private boolean isNum (String s) // check it the string is correct number
 	{
 		boolean isNum=true;
-		if(s.charAt(0)<48 ||s.charAt(0)>57 ) {
+		if(s.charAt(0)<48 ||s.charAt(0)>57 ) { //check if its number
 			throw new RuntimeException("error: invaild input");
 		}
 
-		for (int i=0; i<s.length()&&isNum;i++)
+		for (int i=0; i<s.length()&&isNum;i++) //check if its number
 		{
 			if (s.charAt(i)!='.' &&(s.charAt(i)<48 ||s.charAt(i)>57 ))
 			{
