@@ -199,7 +199,7 @@ class PolynomTest {
 		Polynom p3 = new Polynom("-6x+8x^0-2x^6");
 		Polynom p4 = new Polynom("-X+x^3+x^6");
 		p3.substract(p4);
-		assertEquals("8.0-5.0x-x^3-3.0x^6", p3.toString());
+		assertEquals("-3.0x^6-1.0x^3-5.0x+8.0", p3.toString());
 	}
 
 	@Test
