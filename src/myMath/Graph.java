@@ -53,11 +53,5 @@ public class Graph extends JFrame {
 			}
 			return false;
     }
-    public static void main(String[] args) {
-    	Polynom p=new Polynom ("x^3+x");
-   		double x0=-6;
-		double x1=10;
-		Graph frame = new Graph(p,x0,x1);
-		frame.setVisible(true);
-    }
+
 }
