@@ -10,7 +10,7 @@ import de.erichseifert.gral.plots.points.PointRenderer;
 import de.erichseifert.gral.ui.InteractivePanel;
 
 public class Graph extends JFrame {
-	private double eps=0.25;
+	private double eps=0.01;
     public Graph(Polynom p,double x0,double x1) {
     	double area=p.area(x0, x1,  0.01);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
