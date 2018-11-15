@@ -18,7 +18,9 @@ public class Graph extends JFrame {
         DataTable data = new DataTable(Double.class, Double.class);
         for (double x = x0; x <= x1; x+=eps) {
 			double y = p.f(x);
-			if (isEx(p,x)) {
+			if (isEx(p,x,eps)) {
+//				System.out.println(p.derivative().toString());
+				System.out.println("("+x+","+y+")");
 				Extreme.add(x, y);
 			}else {
 			data.add(x, y);
@@ -35,18 +37,25 @@ public class Graph extends JFrame {
         plot.getPointRenderers(data).get(0).setColor(color);
         plot.getLineRenderers(data).get(0).setColor(color);
     }
-    public static boolean isEx(Polynom p,double x) {
+    public static boolean isEx(Polynom p,double x, double eps) {
     	Polynom_able dx = p.derivative();
 			if(dx.f(x)==0) {
+				if(dx.f(x-eps)>0&&dx.f(x+eps)<0) {
 				return true;
+				}
+				if(dx.f(x-eps)<0&&dx.f(x+eps)>0) {
+					return true;
+				}
 			}
 			return false;
     }
     public static void main(String[] args) {
-    	Polynom p=new Polynom ("x^5-5x^4+5x^3");
+    	Polynom p=new Polynom ("2x^2-2x-1");
+    	
+    	System.out.println(p.derivative().toString());
 		double x0=-6;
 		double x1=10;
-		Graph frame = new Graph(p,x0,x1);
-		frame.setVisible(true);
+	//	Graph frame = new Graph(p,x0,x1);
+	//	frame.setVisible(true);
     }
 }
