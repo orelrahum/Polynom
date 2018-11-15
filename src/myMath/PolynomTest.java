@@ -224,14 +224,27 @@ class PolynomTest {
 	@Test
 	void testIsZero() {
 		Polynom p =new Polynom("0x+1");
+		System.out.println(p);
 		if(p.isZero()) {
 			fail("Not yet implemented");
 		}
+		Polynom p1 = new Polynom("3x^2+10");
+		assertFalse(p1.isZero());
+		
+		Polynom p2 = new Polynom("-6+2x^3+x^2");
+		assertFalse(p2.isZero());
+		
+		Polynom p5 = new Polynom("0+0x^3+0x^2");
+		assertTrue(p5.isZero());
 	}
 
 	@Test
 	void testRoot() {
-	//	fail("Not yet implemented");
+		Polynom p1 = new Polynom("x");
+		assertEquals(0, p1.root(-2, 10, 0.01), 0.01);
+		
+		Polynom p2 = new Polynom("x^2-x-2");
+		assertEquals(2, p2.root(1, 6, 0.01), 0.01);
 	}
 
 	@Test
@@ -255,8 +268,15 @@ class PolynomTest {
 
 	@Test
 	void testArea() {
+		Polynom p1 = new Polynom("x");
+		assertEquals(50, p1.area(0, 10, 0.01), 0.1);
 		
-//		fail("Not yet implemented");
+		Polynom p2 = new Polynom("x^2");
+		assertEquals(41.66, p2.area(0, 5, 0.01), 0.5);
+		
+		Polynom p3 = new Polynom("4x^3+3x^2-6");
+		assertEquals(10250, p3.area(5, 10, 0.01), 7);
+		
 	}
 
 	@Test
