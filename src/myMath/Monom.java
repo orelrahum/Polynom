@@ -73,8 +73,15 @@ public class Monom implements function{
 		}
 		if (powerindex==-1 && xindex!=-1)
 		{
+			
+			
 			if(s.charAt(1)=='-') {
 				String coe=s.substring(1, xindex);
+				set_coefficient(Double.parseDouble(coe));
+				return;
+			}
+			if(s.charAt(0)=='-') {
+				String coe=s.substring(0, xindex)+"1";
 				set_coefficient(Double.parseDouble(coe));
 				return;
 			}
